@@ -28,12 +28,15 @@ Support collaborative and self-paced learning
 # 👨‍💻 Team Information
 ### Team Name: CSE 4104-7B-T05
 
-Team Members
-Name	Student ID	Role
-Ziaul Haque	11230121132	Team Leader
-Miarazul Islam Lingkon	11230121120	Team Member
-Sheikh Fazlul Karim	11230121139	Team Member
-Jannatul Ferdausi Akhi	11230121124	Team Member
+## Team Members
+### Ziaul Haque	(11230121132)
+Team Leader / Architect
+### Miarazul Islam Lingkon (11230121120)
+Backend Engineer
+### Sheikh Fazlul Karim	(11230121139)
+AI & External Integration
+### Jannatul Ferdausi Akhi (11230121124)	
+Frontend Developer
 # 🚀 Proposed Features
 ## 🔐 Authentication & User Management
 Secure login & registration
