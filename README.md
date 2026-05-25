@@ -26,9 +26,7 @@ Provide intelligent learning resource recommendations
 Track academic progress using analytics
 Support collaborative and self-paced learning
 # 👨‍💻 Team Information
-Team Name
-
-CSE 4104-7B-T05
+### Team Name: CSE 4104-7B-T05
 
 Team Members
 Name	Student ID	Role
