@@ -136,7 +136,7 @@ Reduced academic stress
 Increased student engagement
 24/7 academic support access
 Smarter learning through personalization
-🔒 Security & Privacy
+# 🔒 Security & Privacy
 
 The platform prioritizes user data protection through:
 
@@ -145,25 +145,14 @@ Multi-factor authentication (MFA)
 Secure API communication
 Encrypted user data
 GDPR & FERPA compliance considerations
-🌍 Future Scope
+# 🌍 Future Scope
 Mobile application support
 Multi-language support
 Institutional integration
 AI fine-tuned academic models
 Voice-based AI assistant
 Collaborative study rooms
-📂 Project Status
+# 📂 Project Status
 
 🚧 Currently in Development
 
-📜 License
-
-This project is developed for academic and educational purposes.
-
-📧 Contact
-
-For questions or collaboration opportunities, please contact the project team through the GitHub repository.
-
-⭐ Contribution
-
-Contributions, suggestions, and feedback are welcome to improve the project further.
