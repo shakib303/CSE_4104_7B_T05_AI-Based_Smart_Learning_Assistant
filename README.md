@@ -1,5 +1,5 @@
 # CSE_4104_7B_T05_AI-Based_Smart_Learning_Assistant
-AI-Based Smart Learning Assistant
+#AI-Based Smart Learning Assistant
 
 An intelligent AI-powered educational platform designed to help students learn smarter, manage time effectively, and achieve better academic performance through personalized study planning, AI tutoring, progress tracking, and smart recommendations.
 
