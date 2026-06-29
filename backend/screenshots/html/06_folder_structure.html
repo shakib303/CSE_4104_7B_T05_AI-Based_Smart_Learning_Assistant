@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;width:520px;background:#1E1E1E;padding:0}
+.titlebar{background:#323233;padding:8px 12px;display:flex;align-items:center;gap:8px}
+.dot{width:11px;height:11px;border-radius:50%}
+.dot.red{background:#FF5F56}.dot.yellow{background:#FFBD2E}.dot.green{background:#27C93F}
+.titletext{margin-left:8px;color:#CCCCCC;font-size:12px}
+.explorer{padding:10px 0}
+.exp-header{color:#BBBBBB;font-size:11px;font-weight:700;padding:8px 16px;letter-spacing:.05em}
+.tree-item{display:flex;align-items:center;gap:6px;padding:3px 16px;font-size:13px;color:#CCCCCC;font-family:'Segoe UI',Arial,sans-serif}
+.tree-item.folder{color:#CCCCCC}
+.tree-item .icon{width:16px;text-align:center;font-size:12px}
+.indent-1{padding-left:32px}
+.indent-2{padding-left:48px}
+.indent-3{padding-left:64px}
+.folder-icon{color:#DCB67A}
+.js-icon{color:#F7DF1E}
+.json-icon{color:#CBCB41}
+.sql-icon{color:#4479A1}
+.env-icon{color:#8BC34A}
+.md-icon{color:#42A5F5}
+</style>
+</head>
+<body>
+<div class="titlebar">
+  <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+  <span class="titletext">smart-learning-backend — Visual Studio Code</span>
+</div>
+<div class="explorer">
+  <div class="exp-header">EXPLORER: BACKEND</div>
+  <div class="tree-item folder"><span class="icon folder-icon">▾📁</span>backend</div>
+  <div class="tree-item folder indent-1"><span class="icon folder-icon">▾📁</span>database</div>
+  <div class="tree-item indent-2"><span class="icon sql-icon">📄</span>schema.sql</div>
+  <div class="tree-item indent-2"><span class="icon">🗄️</span>dev.db</div>
+  <div class="tree-item folder indent-1"><span class="icon folder-icon">▾📁</span>src</div>
+  <div class="tree-item folder indent-2"><span class="icon folder-icon">▾📁</span>config</div>
+  <div class="tree-item indent-3"><span class="icon js-icon">📄</span>db.js</div>
+  <div class="tree-item folder indent-2"><span class="icon folder-icon">▾📁</span>controllers</div>
+  <div class="tree-item indent-3"><span class="icon js-icon">📄</span>auth.controller.js</div>
+  <div class="tree-item indent-3"><span class="icon js-icon">📄</span>chat.controller.js</div>
+  <div class="tree-item indent-3"><span class="icon js-icon">📄</span>dashboard.controller.js</div>
+  <div class="tree-item indent-3"><span class="icon js-icon">📄</span>task.controller.js</div>
+  <div class="tree-item indent-3"><span class="icon js-icon">📄</span>user.controller.js</div>
+  <div class="tree-item folder indent-2"><span class="icon folder-icon">▾📁</span>middleware</div>
+  <div class="tree-item indent-3"><span class="icon js-icon">📄</span>auth.middleware.js</div>
+  <div class="tree-item indent-3"><span class="icon js-icon">📄</span>error.middleware.js</div>
+  <div class="tree-item indent-3"><span class="icon js-icon">📄</span>validate.middleware.js</div>
+  <div class="tree-item folder indent-2"><span class="icon folder-icon">▾📁</span>routes</div>
+  <div class="tree-item indent-3"><span class="icon js-icon">📄</span>auth.routes.js</div>
+  <div class="tree-item indent-3"><span class="icon js-icon">📄</span>chat.routes.js</div>
+  <div class="tree-item indent-3"><span class="icon js-icon">📄</span>dashboard.routes.js</div>
+  <div class="tree-item indent-3"><span class="icon js-icon">📄</span>subject.routes.js</div>
+  <div class="tree-item indent-3"><span class="icon js-icon">📄</span>task.routes.js</div>
+  <div class="tree-item indent-3"><span class="icon js-icon">📄</span>user.routes.js</div>
+  <div class="tree-item folder indent-2"><span class="icon folder-icon">▾📁</span>services</div>
+  <div class="tree-item indent-3"><span class="icon js-icon">📄</span>ai.service.js</div>
+  <div class="tree-item folder indent-2"><span class="icon folder-icon">▾📁</span>utils</div>
+  <div class="tree-item indent-3"><span class="icon js-icon">📄</span>dbHelpers.js</div>
+  <div class="tree-item indent-3"><span class="icon js-icon">📄</span>jwt.js</div>
+  <div class="tree-item indent-3"><span class="icon js-icon">📄</span>seed.js</div>
+  <div class="tree-item indent-2"><span class="icon js-icon">📄</span>app.js</div>
+  <div class="tree-item indent-2"><span class="icon js-icon">📄</span>server.js</div>
+  <div class="tree-item folder indent-1"><span class="icon folder-icon">▾📁</span>docs</div>
+  <div class="tree-item indent-2"><span class="icon md-icon">📄</span>BackendProgress.md</div>
+  <div class="tree-item folder indent-1"><span class="icon folder-icon">▾📁</span>postman</div>
+  <div class="tree-item indent-2"><span class="icon json-icon">📄</span>APICollection.json</div>
+  <div class="tree-item indent-1"><span class="icon env-icon">📄</span>.env</div>
+  <div class="tree-item indent-1"><span class="icon json-icon">📄</span>package.json</div>
+</div>
+</body>
+</html>

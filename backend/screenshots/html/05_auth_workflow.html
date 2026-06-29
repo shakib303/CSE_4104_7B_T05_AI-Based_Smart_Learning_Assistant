@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;width:1200px;background:white;padding:32px}
+.title{font-size:18px;font-weight:700;color:#0F172A;margin-bottom:4px}
+.sub{font-size:12px;color:#64748B;margin-bottom:28px}
+.flow{display:flex;align-items:flex-start;gap:0;position:relative}
+.step{width:200px;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative}
+.step-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:10px;color:white}
+.step-title{font-size:12px;font-weight:700;color:#0F172A;margin-bottom:4px}
+.step-desc{font-size:10.5px;color:#64748B;line-height:1.4}
+.arrow{width:40px;display:flex;align-items:center;justify-content:center;padding-top:18px;color:#94A3B8;font-size:20px}
+.code-box{margin-top:10px;background:#1E293B;border-radius:6px;padding:8px 10px;font-family:'JetBrains Mono',monospace;font-size:9.5px;color:#86EFAC;text-align:left;width:100%}
+.code-box .key{color:#7DD3FC}
+.divider{height:1px;background:#E2E8F0;margin:36px 0}
+.flow2-title{font-size:13px;font-weight:700;color:#0F172A;margin-bottom:16px}
+</style>
+</head>
+<body>
+<div class="title">🔐 Authentication Workflow — AI Smart Learning Assistant</div>
+<div class="sub">JWT-based authentication with bcrypt password hashing and refresh token rotation</div>
+
+<div class="flow">
+  <div class="step">
+    <div class="step-icon" style="background:#2563EB">👤</div>
+    <div class="step-title">1. User Submits</div>
+    <div class="step-desc">POST /api/auth/login<br>{ email, password }</div>
+  </div>
+  <div class="arrow">→</div>
+  <div class="step">
+    <div class="step-icon" style="background:#7C3AED">✓</div>
+    <div class="step-title">2. Validate Input</div>
+    <div class="step-desc">express-validator checks email format, required fields</div>
+  </div>
+  <div class="arrow">→</div>
+  <div class="step">
+    <div class="step-icon" style="background:#059669">🔍</div>
+    <div class="step-title">3. Lookup &amp; Verify</div>
+    <div class="step-desc">Find user by email, bcrypt.compare() password hash</div>
+    <div class="code-box"><span class="key">bcrypt</span>.compare(pwd, hash)</div>
+  </div>
+  <div class="arrow">→</div>
+  <div class="step">
+    <div class="step-icon" style="background:#D97706">🎫</div>
+    <div class="step-title">4. Issue Tokens</div>
+    <div class="step-desc">Sign JWT access token (15min) + refresh token (7d)</div>
+    <div class="code-box"><span class="key">jwt</span>.sign(payload, SECRET)</div>
+  </div>
+  <div class="arrow">→</div>
+  <div class="step">
+    <div class="step-icon" style="background:#DC2626">📦</div>
+    <div class="step-title">5. Store &amp; Return</div>
+    <div class="step-desc">Refresh token → DB + httpOnly cookie<br>Access token → JSON response</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="flow2-title">🛡️ Protected Route Access (subsequent requests)</div>
+<div class="flow">
+  <div class="step">
+    <div class="step-icon" style="background:#2563EB">📨</div>
+    <div class="step-title">1. Request + Token</div>
+    <div class="step-desc">Authorization: Bearer &lt;token&gt;<br>on every API call</div>
+  </div>
+  <div class="arrow">→</div>
+  <div class="step">
+    <div class="step-icon" style="background:#7C3AED">⚙️</div>
+    <div class="step-title">2. Auth Middleware</div>
+    <div class="step-desc">authenticate() extracts &amp; verifies JWT signature</div>
+    <div class="code-box"><span class="key">jwt</span>.verify(token, SECRET)</div>
+  </div>
+  <div class="arrow">→</div>
+  <div class="step">
+    <div class="step-icon" style="background:#059669">✅</div>
+    <div class="step-title">3a. Valid → Proceed</div>
+    <div class="step-desc">req.user populated, next() called, controller executes</div>
+  </div>
+  <div class="arrow">→</div>
+  <div class="step">
+    <div class="step-icon" style="background:#DC2626">❌</div>
+    <div class="step-title">3b. Invalid → Reject</div>
+    <div class="step-desc">401 Unauthorized returned immediately, no DB access</div>
+  </div>
+</div>
+</body>
+</html>

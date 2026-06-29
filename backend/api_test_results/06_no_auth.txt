@@ -1,0 +1,3 @@
+=== 6. GET PROTECTED ROUTE WITHOUT TOKEN (should fail 401) ===
+{"error":"Access token required"}
+HTTP Status: 401

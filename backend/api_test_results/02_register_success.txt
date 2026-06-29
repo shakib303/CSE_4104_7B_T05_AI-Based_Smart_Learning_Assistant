@@ -1,0 +1,3 @@
+=== 2. REGISTER (new user - should succeed 201) ===
+{"message":"Registration successful.","user":{"id":"cc290636-1557-43fe-94d5-20272adb9d09","name":"Alice Rahman","email":"alice.rahman@example.com","role":"STUDENT","createdAt":"2026-06-28T15:06:20.270Z"},"accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNjMjkwNjM2LTE1NTctNDNmZS05NGQ1LTIwMjcyYWRiOWQwOSIsImVtYWlsIjoiYWxpY2UucmFobWFuQGV4YW1wbGUuY29tIiwicm9sZSI6IlNUVURFTlQiLCJpYXQiOjE3ODI2NTkxODAsImV4cCI6MTc4MjY2MDA4MH0.xaxOucWRYXWwP96Yptl1WQIVbRcxzOjuil6qotrKUvc"}
+HTTP Status: 201

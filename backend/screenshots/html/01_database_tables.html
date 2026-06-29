@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'JetBrains Mono',Menlo,monospace;width:1200px;background:#0F172A;padding:0}
+.window{background:#1E293B;border-radius:10px;overflow:hidden;margin:24px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.titlebar{background:#0F172A;padding:12px 16px;display:flex;align-items:center;gap:8px}
+.dot{width:11px;height:11px;border-radius:50%}
+.dot.red{background:#EF4444}.dot.yellow{background:#F59E0B}.dot.green{background:#10B981}
+.titletext{margin-left:12px;color:#94A3B8;font-size:12px}
+.content{padding:20px 24px}
+.h1{color:#60A5FA;font-size:14px;margin-bottom:4px;font-weight:600}
+.h2{color:#64748B;font-size:11px;margin-bottom:16px}
+table{width:100%;border-collapse:collapse;margin-bottom:8px}
+th{text-align:left;color:#60A5FA;font-size:11px;padding:8px 12px;border-bottom:2px solid #334155;font-weight:600;background:#152033}
+td{color:#E2E8F0;font-size:12px;padding:8px 12px;border-bottom:1px solid #1E293B}
+tr:nth-child(even) td{background:#172033}
+.badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:600}
+.badge.pk{background:#1E3A6E;color:#93C5FD}
+.badge.fk{background:#7C2D2D;color:#FCA5A5}
+.count{color:#34D399;font-weight:700}
+.footer{color:#475569;font-size:10px;margin-top:16px;padding-top:12px;border-top:1px solid #334155}
+</style>
+</head>
+<body>
+<div class="window">
+  <div class="titlebar">
+    <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+    <span class="titletext">node — database inspector — sqlite3 dev.db</span>
+  </div>
+  <div class="content">
+    <div class="h1">$ node inspect-db.js</div>
+    <div class="h2">AI-Based Smart Learning Assistant — SQLite Database (local dev)</div>
+    <table>
+      <tr><th>Table Name</th><th>Row Count</th><th>Primary Key</th><th>Foreign Keys</th><th>Purpose</th></tr>
+      <tr><td>users</td><td class="count">2</td><td><span class="badge pk">id (UUID)</span></td><td>—</td><td>Student/admin accounts, auth, streak, study goals</td></tr>
+      <tr><td>refresh_tokens</td><td class="count">4</td><td><span class="badge pk">id (UUID)</span></td><td><span class="badge fk">user_id → users.id</span></td><td>JWT refresh token storage with expiry</td></tr>
+      <tr><td>subjects</td><td class="count">5</td><td><span class="badge pk">id (UUID)</span></td><td>—</td><td>Subject catalog (Math, Physics, CS, etc.)</td></tr>
+      <tr><td>user_subjects</td><td class="count">3</td><td><span class="badge pk">id (UUID)</span></td><td><span class="badge fk">user_id, subject_id</span></td><td>Many-to-many: user proficiency per subject</td></tr>
+      <tr><td>tasks</td><td class="count">3</td><td><span class="badge pk">id (UUID)</span></td><td><span class="badge fk">user_id, subject_id</span></td><td>Task management — status, priority, due dates</td></tr>
+      <tr><td>study_plans</td><td class="count">0</td><td><span class="badge pk">id (UUID)</span></td><td><span class="badge fk">user_id</span></td><td>AI-generated and manual study plans</td></tr>
+      <tr><td>chat_sessions</td><td class="count">1</td><td><span class="badge pk">id (UUID)</span></td><td><span class="badge fk">user_id</span></td><td>AI chatbot conversation sessions</td></tr>
+      <tr><td>chat_messages</td><td class="count">2</td><td><span class="badge pk">id (UUID)</span></td><td><span class="badge fk">session_id</span></td><td>Individual chat messages (user + assistant)</td></tr>
+      <tr><td>recommendations</td><td class="count">0</td><td><span class="badge pk">id (UUID)</span></td><td><span class="badge fk">user_id, subject_id</span></td><td>AI-curated learning resources</td></tr>
+      <tr><td>study_logs</td><td class="count">1</td><td><span class="badge pk">id (UUID)</span></td><td><span class="badge fk">user_id, subject_id</span></td><td>Logged study sessions for analytics</td></tr>
+      <tr><td>notifications</td><td class="count">0</td><td><span class="badge pk">id (UUID)</span></td><td><span class="badge fk">user_id</span></td><td>In-app notifications</td></tr>
+    </table>
+    <div class="footer">11 tables · matches ER Diagram (Week 4) · foreign keys enforced via PRAGMA foreign_keys = ON · database/dev.db</div>
+  </div>
+</div>
+</body>
+</html>

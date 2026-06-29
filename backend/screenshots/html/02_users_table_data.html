@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'JetBrains Mono',Menlo,monospace;width:1200px;background:#0F172A}
+.window{background:#1E293B;border-radius:10px;overflow:hidden;margin:24px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.titlebar{background:#0F172A;padding:12px 16px;display:flex;align-items:center;gap:8px}
+.dot{width:11px;height:11px;border-radius:50%}
+.dot.red{background:#EF4444}.dot.yellow{background:#F59E0B}.dot.green{background:#10B981}
+.titletext{margin-left:12px;color:#94A3B8;font-size:12px}
+.content{padding:20px 24px}
+.prompt{color:#34D399;font-size:12px;margin-bottom:6px}
+.h2{color:#64748B;font-size:11px;margin-bottom:14px}
+table{width:100%;border-collapse:collapse;margin-bottom:12px}
+th{text-align:left;color:#60A5FA;font-size:10.5px;padding:7px 10px;border-bottom:2px solid #334155;font-weight:600;background:#152033}
+td{color:#E2E8F0;font-size:11px;padding:7px 10px;border-bottom:1px solid #1E293B}
+tr:nth-child(even) td{background:#172033}
+.mono{color:#A78BFA;font-size:10px}
+.role-student{color:#60A5FA;font-weight:600}
+.streak{color:#FBBF24;font-weight:600}
+.footer{color:#475569;font-size:10px;margin-top:14px;padding-top:10px;border-top:1px solid #334155}
+</style>
+</head>
+<body>
+<div class="window">
+  <div class="titlebar">
+    <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+    <span class="titletext">node — SELECT * FROM users — dev.db</span>
+  </div>
+  <div class="content">
+    <div class="prompt">&gt; db.prepare("SELECT id, name, email, role, streak, study_goal_hrs, email_verified FROM users").all()</div>
+    <div class="h2">2 rows returned</div>
+    <table>
+      <tr><th>id</th><th>name</th><th>email</th><th>role</th><th>streak</th><th>study_goal_hrs</th><th>email_verified</th><th>created_at</th></tr>
+      <tr>
+        <td class="mono">54c13f51-f88a...</td>
+        <td>Demo Student</td>
+        <td>demo@smartlearning.app</td>
+        <td class="role-student">STUDENT</td>
+        <td class="streak">7</td>
+        <td>5</td>
+        <td>1</td>
+        <td class="mono">2026-06-28 15:05:44</td>
+      </tr>
+      <tr>
+        <td class="mono">cc290636-1557...</td>
+        <td>Alice Rahman</td>
+        <td>alice.rahman@example.com</td>
+        <td class="role-student">STUDENT</td>
+        <td class="streak">0</td>
+        <td>4</td>
+        <td>0</td>
+        <td class="mono">2026-06-28 15:06:20</td>
+      </tr>
+    </table>
+    <div class="footer">password column omitted from display — stored as bcrypt hash, salt factor 12 · users.email has UNIQUE constraint</div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;width:1280px;background:#F1F3F5}
+.app{display:grid;grid-template-columns:240px 1fr;height:800px}
+.sidebar{background:#FF6C37;padding:0}
+.sb-header{padding:16px;display:flex;align-items:center;gap:8px;background:#E8632A}
+.sb-logo{width:24px;height:24px;background:white;border-radius:5px;display:flex;align-items:center;justify-content:center;font-weight:900;color:#FF6C37;font-size:13px}
+.sb-title{color:white;font-weight:700;font-size:14px}
+.sb-item{padding:10px 16px;color:rgba(255,255,255,.85);font-size:12px;display:flex;align-items:center;gap:8px}
+.sb-item.active{background:rgba(255,255,255,.15);color:white;font-weight:600}
+.main{background:white;display:flex;flex-direction:column}
+.tabs{display:flex;border-bottom:1px solid #E2E8F0;padding:0 16px;gap:0}
+.tab{padding:12px 16px;font-size:12px;color:#64748B;border-bottom:2px solid transparent;display:flex;align-items:center;gap:8px}
+.tab.active{color:#1E293B;border-bottom-color:#FF6C37;font-weight:600}
+.method-post{background:#FCA130;color:white;font-weight:700;font-size:10px;padding:2px 6px;border-radius:3px}
+.req-bar{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid #E2E8F0}
+.method-select{background:#FCA130;color:white;font-weight:700;font-size:12px;padding:8px 12px;border-radius:5px}
+.url-bar{flex:1;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:5px;padding:8px 12px;font-size:12px;color:#1E293B;font-family:monospace}
+.send-btn{background:#FF6C37;color:white;font-weight:700;font-size:12px;padding:8px 20px;border-radius:5px}
+.req-tabs{display:flex;gap:20px;padding:0 16px;border-bottom:1px solid #E2E8F0}
+.req-tab{padding:10px 0;font-size:12px;color:#64748B}
+.req-tab.active{color:#1E293B;font-weight:600;border-bottom:2px solid #FF6C37}
+.body-section{padding:14px 16px;flex:1;display:grid;grid-template-rows:auto 1fr}
+.body-label{font-size:11px;color:#64748B;margin-bottom:8px;font-weight:600}
+.json-box{background:#1E293B;border-radius:6px;padding:14px;font-family:'JetBrains Mono',monospace;font-size:12px;color:#E2E8F0;line-height:1.7}
+.json-key{color:#7DD3FC}
+.json-str{color:#86EFAC}
+.response-section{border-top:1px solid #E2E8F0;padding:14px 16px}
+.resp-header{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.status-pill{background:#DCFCE7;color:#15803D;font-weight:700;font-size:12px;padding:4px 10px;border-radius:5px}
+.resp-meta{font-size:11px;color:#94A3B8}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="sidebar">
+    <div class="sb-header">
+      <div class="sb-logo">P</div>
+      <span class="sb-title">Smart Learning API</span>
+    </div>
+    <div class="sb-item">📁 Authentication</div>
+    <div class="sb-item active">&nbsp;&nbsp;<span class="method-post">POST</span> Login</div>
+    <div class="sb-item">&nbsp;&nbsp;<span class="method-post">POST</span> Register</div>
+    <div class="sb-item">&nbsp;&nbsp;<span class="method-post">POST</span> Refresh Token</div>
+    <div class="sb-item">📁 Tasks</div>
+    <div class="sb-item">📁 AI Chat</div>
+    <div class="sb-item">📁 Dashboard</div>
+    <div class="sb-item">📁 Subjects</div>
+  </div>
+  <div class="main">
+    <div class="tabs">
+      <div class="tab active"><span class="method-post">POST</span>&nbsp; Login</div>
+    </div>
+    <div class="req-bar">
+      <div class="method-select">POST ▾</div>
+      <div class="url-bar">http://localhost:4000/api/auth/login</div>
+      <div class="send-btn">Send</div>
+    </div>
+    <div class="req-tabs">
+      <div class="req-tab">Params</div>
+      <div class="req-tab">Authorization</div>
+      <div class="req-tab">Headers <span style="color:#94A3B8">(1)</span></div>
+      <div class="req-tab active">Body</div>
+    </div>
+    <div class="body-section">
+      <div style="padding:14px 16px 0">
+        <div class="body-label">raw (JSON)</div>
+        <div class="json-box">{<br>
+&nbsp;&nbsp;<span class="json-key">"email"</span>: <span class="json-str">"demo@smartlearning.app"</span>,<br>
+&nbsp;&nbsp;<span class="json-key">"password"</span>: <span class="json-str">"Demo@1234"</span><br>
+}</div>
+      </div>
+    </div>
+    <div class="response-section">
+      <div class="resp-header">
+        <span class="status-pill">200 OK</span>
+        <span class="resp-meta">Time: 47 ms</span>
+        <span class="resp-meta">Size: 612 B</span>
+      </div>
+      <div class="json-box" style="max-height:220px;overflow:hidden">{<br>
+&nbsp;&nbsp;<span class="json-key">"user"</span>: {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="json-key">"id"</span>: <span class="json-str">"54c13f51-f88a-411b-a6c0-8b1fdf7242d4"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="json-key">"email"</span>: <span class="json-str">"demo@smartlearning.app"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="json-key">"name"</span>: <span class="json-str">"Demo Student"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="json-key">"role"</span>: <span class="json-str">"STUDENT"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="json-key">"streak"</span>: 7,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="json-key">"studyGoalHrs"</span>: 5<br>
+&nbsp;&nbsp;},<br>
+&nbsp;&nbsp;<span class="json-key">"accessToken"</span>: <span class="json-str">"eyJhbGciOiJIUzI1NiIs...lUvc"</span><br>
+}</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

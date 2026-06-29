@@ -1,0 +1,3 @@
+=== 20. UNKNOWN ROUTE (404) ===
+{"error":"Route GET /api/this-route-does-not-exist not found"}
+HTTP Status: 404

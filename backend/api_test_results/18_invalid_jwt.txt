@@ -1,0 +1,3 @@
+=== 18. ERROR HANDLING: INVALID JWT (should fail 401) ===
+{"error":"Invalid or expired access token"}
+HTTP Status: 401

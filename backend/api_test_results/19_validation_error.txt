@@ -1,0 +1,3 @@
+=== 19. ERROR HANDLING: MISSING TITLE ON TASK CREATE (422) ===
+{"error":"Validation failed","details":[{"field":"title","message":"Title is required"}]}
+HTTP Status: 422

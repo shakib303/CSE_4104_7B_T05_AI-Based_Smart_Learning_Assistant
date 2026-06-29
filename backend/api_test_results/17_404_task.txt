@@ -1,0 +1,3 @@
+=== 17. ERROR HANDLING: GET NON-EXISTENT TASK (404) ===
+{"error":"Task not found"}
+HTTP Status: 404

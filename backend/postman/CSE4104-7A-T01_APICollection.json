@@ -1,0 +1,310 @@
+{
+  "info": {
+    "name": "CSE4104-7A-T01 - AI Smart Learning Assistant API",
+    "description": "Backend API collection for the AI-Based Smart Learning Assistant. Covers Authentication, User Profile, Task Management, AI Chat, Dashboard, and Subjects endpoints.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:4000/api" },
+    { "key": "accessToken", "value": "" },
+    { "key": "taskId", "value": "" },
+    { "key": "sessionId", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/auth/register",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Alice Rahman\",\n  \"email\": \"alice.rahman@example.com\",\n  \"password\": \"SecurePass123\"\n}"
+            }
+          },
+          "response_example": { "status": 201, "body": "{ \"message\": \"Registration successful.\", \"user\": {...}, \"accessToken\": \"...\" }" }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/auth/login",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"demo@smartlearning.app\",\n  \"password\": \"Demo@1234\"\n}"
+            }
+          },
+          "response_example": { "status": 200, "body": "{ \"user\": {...}, \"accessToken\": \"...\" }" }
+        },
+        {
+          "name": "Get Current User (Me)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/auth/me"
+          },
+          "response_example": { "status": 200, "body": "{ \"user\": { \"id\": \"...\", \"name\": \"...\", \"email\": \"...\" } }" }
+        },
+        {
+          "name": "Refresh Token",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": "{{baseUrl}}/auth/refresh",
+            "description": "Reads refreshToken from httpOnly cookie set during login/register."
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/auth/logout"
+          }
+        }
+      ]
+    },
+    {
+      "name": "User Profile",
+      "item": [
+        {
+          "name": "Get Profile",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/users/profile"
+          }
+        },
+        {
+          "name": "Update Profile",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{baseUrl}}/users/profile",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bio\": \"Computer Science student focused on algorithms.\",\n  \"studyGoalHrs\": 5\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Password",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{baseUrl}}/users/password",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currentPassword\": \"Demo@1234\",\n  \"newPassword\": \"NewSecurePass456\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tasks",
+      "item": [
+        {
+          "name": "List Tasks",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/tasks?status=TODO&priority=HIGH"
+          }
+        },
+        {
+          "name": "Create Task",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{baseUrl}}/tasks",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Submit Algorithm Assignment\",\n  \"description\": \"Complete and submit sorting algorithm comparison\",\n  \"priority\": \"URGENT\",\n  \"dueDate\": \"2026-07-05T23:59:00.000Z\",\n  \"estimatedMin\": 90,\n  \"tags\": [\"algorithms\", \"homework\"]\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Task by ID",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/tasks/{{taskId}}"
+          }
+        },
+        {
+          "name": "Update Task",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{baseUrl}}/tasks/{{taskId}}",
+            "body": { "mode": "raw", "raw": "{\n  \"priority\": \"HIGH\"\n}" }
+          }
+        },
+        {
+          "name": "Update Task Status",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{baseUrl}}/tasks/{{taskId}}/status",
+            "body": { "mode": "raw", "raw": "{\n  \"status\": \"DONE\"\n}" }
+          }
+        },
+        {
+          "name": "Delete Task",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/tasks/{{taskId}}"
+          }
+        },
+        {
+          "name": "Get Task Stats",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/tasks/stats"
+          }
+        }
+      ]
+    },
+    {
+      "name": "AI Chat",
+      "item": [
+        {
+          "name": "List Chat Sessions",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/chat/sessions"
+          }
+        },
+        {
+          "name": "Create Chat Session",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{baseUrl}}/chat/sessions",
+            "body": { "mode": "raw", "raw": "{\n  \"title\": \"Binary Search Trees\"\n}" }
+          }
+        },
+        {
+          "name": "Get Chat Session",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/chat/sessions/{{sessionId}}"
+          }
+        },
+        {
+          "name": "Send Message (AI Chat)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{baseUrl}}/chat/sessions/{{sessionId}}/messages",
+            "body": { "mode": "raw", "raw": "{\n  \"content\": \"Can you explain what a Binary Search Tree is?\"\n}" }
+          },
+          "response_example": {
+            "status": 200,
+            "body": "{ \"userMessage\": {...}, \"assistantMessage\": { \"content\": \"...\", \"tokens\": 177 } }"
+          }
+        },
+        {
+          "name": "Delete Chat Session",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/chat/sessions/{{sessionId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Dashboard",
+      "item": [
+        {
+          "name": "Get Dashboard Summary",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/dashboard"
+          }
+        },
+        {
+          "name": "Log Study Session",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{baseUrl}}/dashboard/study-log",
+            "body": { "mode": "raw", "raw": "{\n  \"durationMin\": 45,\n  \"notes\": \"Reviewed binary trees and practice problems\"\n}" }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Subjects",
+      "item": [
+        {
+          "name": "List Subjects",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/subjects"
+          }
+        },
+        {
+          "name": "Create Subject",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{baseUrl}}/subjects",
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Economics\",\n  \"color\": \"#F97316\",\n  \"icon\": \"📊\"\n}" }
+          }
+        },
+        {
+          "name": "Enroll in Subject",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{baseUrl}}/subjects/user",
+            "body": { "mode": "raw", "raw": "{\n  \"subjectId\": \"<subject-uuid>\",\n  \"proficiency\": 65\n}" }
+          }
+        }
+      ]
+    }
+  ]
+}

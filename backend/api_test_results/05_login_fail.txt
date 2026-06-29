@@ -1,0 +1,3 @@
+=== 5. LOGIN (wrong password - should fail 401) ===
+{"error":"Invalid credentials"}
+HTTP Status: 401

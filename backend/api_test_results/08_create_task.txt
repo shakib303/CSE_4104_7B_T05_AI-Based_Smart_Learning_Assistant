@@ -1,0 +1,3 @@
+=== 8. CREATE TASK ===
+{"task":{"id":"3fe41ce3-d3f9-41ca-92cc-846dbacb6b88","title":"Submit Algorithm Assignment","description":"Implement quicksort and mergesort","status":"TODO","priority":"URGENT","dueDate":"2026-07-05T23:59:00Z","estimatedMin":null,"actualMin":null,"tags":[],"userId":"54c13f51-f88a-411b-a6c0-8b1fdf7242d4","subjectId":null,"completedAt":null,"createdAt":"2026-06-28T15:07:05.643Z","updatedAt":"2026-06-28T15:07:05.643Z","subject":null}}
+HTTP Status: 201

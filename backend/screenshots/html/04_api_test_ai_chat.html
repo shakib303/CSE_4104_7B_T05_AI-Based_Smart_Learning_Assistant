@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;width:1280px;background:#F1F3F5}
+.app{display:grid;grid-template-columns:240px 1fr;height:820px}
+.sidebar{background:#FF6C37;padding:0}
+.sb-header{padding:16px;display:flex;align-items:center;gap:8px;background:#E8632A}
+.sb-logo{width:24px;height:24px;background:white;border-radius:5px;display:flex;align-items:center;justify-content:center;font-weight:900;color:#FF6C37;font-size:13px}
+.sb-title{color:white;font-weight:700;font-size:14px}
+.sb-item{padding:10px 16px;color:rgba(255,255,255,.85);font-size:12px;display:flex;align-items:center;gap:8px}
+.sb-item.active{background:rgba(255,255,255,.15);color:white;font-weight:600}
+.main{background:white;display:flex;flex-direction:column}
+.tabs{display:flex;border-bottom:1px solid #E2E8F0;padding:0 16px}
+.tab{padding:12px 16px;font-size:12px;color:#1E293B;border-bottom:2px solid #FF6C37;font-weight:600;display:flex;align-items:center;gap:8px}
+.method-post{background:#FCA130;color:white;font-weight:700;font-size:10px;padding:2px 6px;border-radius:3px}
+.req-bar{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid #E2E8F0}
+.method-select{background:#FCA130;color:white;font-weight:700;font-size:12px;padding:8px 12px;border-radius:5px}
+.url-bar{flex:1;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:5px;padding:8px 12px;font-size:12px;color:#1E293B;font-family:monospace}
+.send-btn{background:#FF6C37;color:white;font-weight:700;font-size:12px;padding:8px 20px;border-radius:5px}
+.req-tabs{display:flex;gap:20px;padding:0 16px;border-bottom:1px solid #E2E8F0}
+.req-tab{padding:10px 0;font-size:12px;color:#64748B}
+.req-tab.active{color:#1E293B;font-weight:600;border-bottom:2px solid #FF6C37}
+.body-label{font-size:11px;color:#64748B;margin:14px 16px 8px;font-weight:600}
+.json-box{margin:0 16px;background:#1E293B;border-radius:6px;padding:14px;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#E2E8F0;line-height:1.65}
+.json-key{color:#7DD3FC}
+.json-str{color:#86EFAC}
+.json-num{color:#FCA5A5}
+.auth-note{margin:8px 16px 0;font-size:10.5px;color:#94A3B8;display:flex;align-items:center;gap:6px}
+.response-section{border-top:1px solid #E2E8F0;padding:14px 16px;flex:1}
+.resp-header{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.status-pill{background:#DCFCE7;color:#15803D;font-weight:700;font-size:12px;padding:4px 10px;border-radius:5px}
+.resp-meta{font-size:11px;color:#94A3B8}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="sidebar">
+    <div class="sb-header">
+      <div class="sb-logo">P</div>
+      <span class="sb-title">Smart Learning API</span>
+    </div>
+    <div class="sb-item">📁 Authentication</div>
+    <div class="sb-item">📁 Tasks</div>
+    <div class="sb-item">📁 AI Chat</div>
+    <div class="sb-item">&nbsp;&nbsp;<span class="method-post">POST</span> Create Session</div>
+    <div class="sb-item active">&nbsp;&nbsp;<span class="method-post">POST</span> Send Message</div>
+    <div class="sb-item">📁 Dashboard</div>
+    <div class="sb-item">📁 Subjects</div>
+  </div>
+  <div class="main">
+    <div class="tabs">
+      <div class="tab"><span class="method-post">POST</span>&nbsp; Send Message (AI Chat)</div>
+    </div>
+    <div class="req-bar">
+      <div class="method-select">POST ▾</div>
+      <div class="url-bar">http://localhost:4000/api/chat/sessions/8e48a9dd-.../messages</div>
+      <div class="send-btn">Send</div>
+    </div>
+    <div class="req-tabs">
+      <div class="req-tab">Params</div>
+      <div class="req-tab">Authorization 🔒</div>
+      <div class="req-tab">Headers <span style="color:#94A3B8">(2)</span></div>
+      <div class="req-tab active">Body</div>
+    </div>
+    <div class="auth-note">🔑 Authorization: Bearer eyJhbGciOiJIUzI1NiIs... (Auto-inherited from collection)</div>
+    <div class="body-label">raw (JSON)</div>
+    <div class="json-box">{<br>
+&nbsp;&nbsp;<span class="json-key">"content"</span>: <span class="json-str">"Can you explain what a Binary Search Tree is?"</span><br>
+}</div>
+
+    <div class="response-section">
+      <div class="resp-header">
+        <span class="status-pill">200 OK</span>
+        <span class="resp-meta">Time: 184 ms</span>
+        <span class="resp-meta">Size: 1.02 KB</span>
+      </div>
+      <div class="json-box">{<br>
+&nbsp;&nbsp;<span class="json-key">"userMessage"</span>: {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="json-key">"id"</span>: <span class="json-str">"eb138a73-2197-4fa1..."</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="json-key">"role"</span>: <span class="json-str">"USER"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="json-key">"content"</span>: <span class="json-str">"Can you explain what a Binary Search Tree is?"</span><br>
+&nbsp;&nbsp;},<br>
+&nbsp;&nbsp;<span class="json-key">"assistantMessage"</span>: {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="json-key">"id"</span>: <span class="json-str">"73eb57e0-2dc2-4112..."</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="json-key">"role"</span>: <span class="json-str">"ASSISTANT"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="json-key">"content"</span>: <span class="json-str">"Great question! Let's break this down...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A Binary Search Tree (BST) is a node-based<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data structure where each node has at most<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;two children..."</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="json-key">"tokens"</span>: <span class="json-num">177</span><br>
+&nbsp;&nbsp;}<br>
+}</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
